@@ -139,5 +139,5 @@ void setSelection(id){
     itemState3.setSelected(true);
   }
   selectedID=id;
-  SetBody(id);
+  setBody(id);
 }

@@ -4,7 +4,6 @@ import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/home.dart';
 Client client=Client(39810);
 late Body body;

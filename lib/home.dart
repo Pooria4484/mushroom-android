@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/main.dart';
+
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 ValueNotifier valueNotifier =
     ValueNotifier<Icon>(Icon(Icons.wifi_protected_setup_sharp));
@@ -38,6 +39,7 @@ class Body extends StatelessWidget {
 
 class WifiButton extends StatefulWidget {
   const WifiButton({Key? key}) : super(key: key);
+
   @override
   _WifiButtonState createState() => _WifiButtonState();
 }
@@ -86,6 +88,7 @@ class _PageBodyState extends State<PageBody> {
 
 class Notify extends Notification {
   final String key;
+
   Notify(this.key);
 }
 
@@ -114,9 +117,7 @@ class TempBody extends StatelessWidget {
             child: const SizedBox(
               height: 110,
               child: Center(
-                child: TempCard(
-
-                ),
+                child: TempCard(),
               ),
             ),
           ),
@@ -145,9 +146,7 @@ class TempBody extends StatelessWidget {
             },
             child: const SizedBox(
               height: 110,
-              child: Center(
-                child: Co2Card()
-              ),
+              child: Center(child: Co2Card()),
             ),
           ),
         )
@@ -172,50 +171,39 @@ class _TempCardState extends State<TempCard> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
-            Text('دمای محیط',
-                style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 25,
-                  color: Colors.black
-                ),
-            ),
-            Text('دمای تنظیم شده',
+            Text(
+              'دمای محیط',
               style: TextStyle(
-                fontFamily: "Vazir",
-                fontSize: 18,
-                color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 25, color: Colors.black),
+            ),
+            Text(
+              'دمای تنظیم شده',
+              style: TextStyle(
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
             ),
           ],
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('32° C',
+            Text(
+              '32° C',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 30,
-                  color: Colors.black
-              ),
+                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
               textDirection: TextDirection.ltr,
             ),
-            Text('22° C',
+            Text(
+              '22° C',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 18,
-                  color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
               textDirection: TextDirection.ltr,
             ),
           ],
         )
       ],
-
     );
   }
 }
-
 
 class Co2Card extends StatefulWidget {
   const Co2Card({Key? key}) : super(key: key);
@@ -227,56 +215,45 @@ class Co2Card extends StatefulWidget {
 class _Co2CardState extends State<Co2Card> {
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
-            Text('غلظت CO2',
+            Text(
+              'غلظت CO2',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 25,
-                  color: Colors.black
-              ),
+                  fontFamily: "Vazir", fontSize: 25, color: Colors.black),
             ),
-            Text('غلظت تنظیم شده',
+            Text(
+              'غلظت تنظیم شده',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 18,
-                  color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
             ),
           ],
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('400 ppm',
+            Text(
+              '400 ppm',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 30,
-                  color: Colors.black
-              ),
+                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
               textDirection: TextDirection.ltr,
             ),
-            Text('250 ppm',
+            Text(
+              '250 ppm',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 18,
-                  color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
               textDirection: TextDirection.ltr,
             ),
           ],
         )
       ],
-
     );
   }
 }
-
 
 class MistCard extends StatefulWidget {
   const MistCard({Key? key}) : super(key: key);
@@ -288,103 +265,45 @@ class MistCard extends StatefulWidget {
 class _MistCardState extends State<MistCard> {
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-
-            Text('رطوبت هوا',
+            Text(
+              'رطوبت هوا',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 25,
-                  color: Colors.black
-              ),
+                  fontFamily: "Vazir", fontSize: 25, color: Colors.black),
             ),
-            Text('رطوبت تنظیم شده',
+            Text(
+              'رطوبت تنظیم شده',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 18,
-                  color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
             ),
           ],
         ),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('80 %',
+            Text(
+              '80 %',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 30,
-                  color: Colors.black
-              ),
+                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
               textDirection: TextDirection.ltr,
             ),
-            Text('90 % Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-    Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-
-    Text('دمای فعلی',
-    style: TextStyle(
-    fontFamily: "Vazir",
-    fontSize: 25,
-    color: Colors.black
-    ),
-    ),
-    Text('دمای تنظیم شده',
-    style: TextStyle(
-    fontFamily: "Vazir",
-    fontSize: 18,
-    color: Colors.black54
-    ),
-    ),
-    ],
-    ),
-    Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-    Text('32° C',
-    style: TextStyle(
-    fontFamily: "Vazir",
-    fontSize: 30,
-    color: Colors.black
-    ),
-    textDirection: TextDirection.ltr,
-    ),
-    Text('22° C',
-    style: TextStyle(
-    fontFamily: "Vazir",
-    fontSize: 18,
-    color: Colors.black54
-    ),
-    textDirection: TextDirection.ltr,
-    ),
-    ],
-    )
-    ],
-
-    );',
+            Text(
+              '90 %',
               style: TextStyle(
-                  fontFamily: "Vazir",
-                  fontSize: 18,
-                  color: Colors.black54
-              ),
+                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
               textDirection: TextDirection.ltr,
             ),
           ],
         )
       ],
-
     );
   }
 }
-
-
 
 class TimerBody extends StatefulWidget {
   const TimerBody({Key? key}) : super(key: key);
@@ -437,6 +356,6 @@ class _ChartBodyState extends State<ChartBody> {
   }
 }
 
-void SetBody(id) {
+void setBody(id) {
   bodyID.value = id;
 }
