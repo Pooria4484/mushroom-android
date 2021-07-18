@@ -131,7 +131,7 @@ class TempBody extends StatelessWidget {
             child: const SizedBox(
               height: 110,
               child: Center(
-                child: Text('A card that can be tapped'),
+                child: MistCard(),
               ),
             ),
           ),
@@ -146,7 +146,7 @@ class TempBody extends StatelessWidget {
             child: const SizedBox(
               height: 110,
               child: Center(
-                child: Text('A card that can be tapped'),
+                child: Co2Card()
               ),
             ),
           ),
@@ -173,7 +173,7 @@ class _TempCardState extends State<TempCard> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
 
-            Text('دمای فعلی',
+            Text('دمای محیط',
                 style: TextStyle(
                   fontFamily: "Vazir",
                   fontSize: 25,
@@ -215,6 +215,176 @@ class _TempCardState extends State<TempCard> {
     );
   }
 }
+
+
+class Co2Card extends StatefulWidget {
+  const Co2Card({Key? key}) : super(key: key);
+
+  @override
+  _Co2CardState createState() => _Co2CardState();
+}
+
+class _Co2CardState extends State<Co2Card> {
+  @override
+  Widget build(BuildContext context) {
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+
+            Text('غلظت CO2',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 25,
+                  color: Colors.black
+              ),
+            ),
+            Text('غلظت تنظیم شده',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 18,
+                  color: Colors.black54
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('400 ppm',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 30,
+                  color: Colors.black
+              ),
+              textDirection: TextDirection.ltr,
+            ),
+            Text('250 ppm',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 18,
+                  color: Colors.black54
+              ),
+              textDirection: TextDirection.ltr,
+            ),
+          ],
+        )
+      ],
+
+    );
+  }
+}
+
+
+class MistCard extends StatefulWidget {
+  const MistCard({Key? key}) : super(key: key);
+
+  @override
+  _MistCardState createState() => _MistCardState();
+}
+
+class _MistCardState extends State<MistCard> {
+  @override
+  Widget build(BuildContext context) {
+    return  Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+
+            Text('رطوبت هوا',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 25,
+                  color: Colors.black
+              ),
+            ),
+            Text('رطوبت تنظیم شده',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 18,
+                  color: Colors.black54
+              ),
+            ),
+          ],
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('80 %',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 30,
+                  color: Colors.black
+              ),
+              textDirection: TextDirection.ltr,
+            ),
+            Text('90 % Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+    Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+
+    Text('دمای فعلی',
+    style: TextStyle(
+    fontFamily: "Vazir",
+    fontSize: 25,
+    color: Colors.black
+    ),
+    ),
+    Text('دمای تنظیم شده',
+    style: TextStyle(
+    fontFamily: "Vazir",
+    fontSize: 18,
+    color: Colors.black54
+    ),
+    ),
+    ],
+    ),
+    Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+    Text('32° C',
+    style: TextStyle(
+    fontFamily: "Vazir",
+    fontSize: 30,
+    color: Colors.black
+    ),
+    textDirection: TextDirection.ltr,
+    ),
+    Text('22° C',
+    style: TextStyle(
+    fontFamily: "Vazir",
+    fontSize: 18,
+    color: Colors.black54
+    ),
+    textDirection: TextDirection.ltr,
+    ),
+    ],
+    )
+    ],
+
+    );',
+              style: TextStyle(
+                  fontFamily: "Vazir",
+                  fontSize: 18,
+                  color: Colors.black54
+              ),
+              textDirection: TextDirection.ltr,
+            ),
+          ],
+        )
+      ],
+
+    );
+  }
+}
+
+
 
 class TimerBody extends StatefulWidget {
   const TimerBody({Key? key}) : super(key: key);
