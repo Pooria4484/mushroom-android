@@ -1,10 +1,10 @@
 import 'dart:io';
-
 import 'dart:typed_data';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom/home.dart';
+
+
 Client client=Client(39810);
 late Body body;
 void main(){
@@ -23,29 +23,33 @@ class Client{
 
   void startTCPClient() async {
     valueNotifier.value=Icon(Icons.wifi_protected_setup_sharp,color: Colors.red);
-    socket = await Socket.connect('192.168.4.1', this.port);
-    socket.write('Hello, Server!\r\n');
-    socket.listen(
-          (Uint8List data) {
-            isConnected=true;
-        final serverResponse = String.fromCharCodes(data);
-        handleMessage(serverResponse);
-      },
+    try {
+      socket = await Socket.connect('192.168.4.1', this.port);
+      socket.write('Hello, Server!\r\n');
+      socket.listen(
+            (Uint8List data) {
+          isConnected = true;
+          final serverResponse = String.fromCharCodes(data);
+          handleMessage(serverResponse);
+        },
 
-      onError: (error) {
-        print(error);
-        socket.destroy();
-        isConnected=false;
-        valueNotifier.value=Icon(Icons.wifi_protected_setup_sharp,color: Colors.red);
-      },
+        onError: (error) {
+          print(error);
+          socket.destroy();
+          isConnected = false;
+          valueNotifier.value =
+              Icon(Icons.wifi_protected_setup_sharp, color: Colors.red);
+        },
 
-      onDone: () {
-        print('Server left.');
-        socket.destroy();
-        isConnected=false;
-        valueNotifier.value=Icon(Icons.wifi_protected_setup_sharp,color: Colors.red);
-      },
-    );
+        onDone: () {
+          print('Server left.');
+          socket.destroy();
+          isConnected = false;
+          valueNotifier.value =
+              Icon(Icons.wifi_protected_setup_sharp, color: Colors.red);
+        },
+      );
+    }catch(e){print(e.toString());}
   }
 
   void send(data)async{
@@ -75,6 +79,23 @@ class Client{
         assert(val is int);
         setTempGoalVal(val);
       }
+
+
+      if(cmnd.contains('hug')){
+        String buff=cmnd.substring(cmnd.indexOf('hug')+3,cmnd.indexOf('hug')+5);
+        var val = int.parse(buff);
+        assert(val is int);
+        setTempGoalVal(val);
+      }
+
+
+      if(cmnd.contains('huc')){
+        String buff=cmnd.substring(cmnd.indexOf('huc')+3,cmnd.indexOf('huc')+6);
+        var val = int.parse(buff);
+        assert(val is int);
+        setTempVal(val);
+      }
+
     }
     print(message);
 

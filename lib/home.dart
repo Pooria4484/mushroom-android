@@ -1,14 +1,23 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/main.dart';
 
+List<Color> gradientColors = [
+  const Color(0xff23b6e6),
+  const Color(0xff02d39a),
+];
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 ValueNotifier valueNotifier =
     ValueNotifier<Icon>(Icon(Icons.wifi_protected_setup_sharp));
 ValueNotifier tempVal = ValueNotifier<int>(250);
+
 ValueNotifier tempGoal = ValueNotifier<int>(25);
 ValueNotifier bodyID = ValueNotifier<int>(0);
+
+ValueNotifier huVal = ValueNotifier<int>(600);
+ValueNotifier huGoal = ValueNotifier<int>(75);
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -86,12 +95,6 @@ class _PageBodyState extends State<PageBody> {
   }
 }
 
-class Notify extends Notification {
-  final String key;
-
-  Notify(this.key);
-}
-
 // class TempBody extends StatefulWidget {
 //   const TempBody({Key? key}) : super(key: key);
 //
@@ -128,7 +131,7 @@ class TempBody extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
+              //print('Card tapped.');
             },
             child: const SizedBox(
               height: 110,
@@ -143,7 +146,7 @@ class TempBody extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
+              //print('Card tapped.');
             },
             child: const SizedBox(
               height: 110,
@@ -282,18 +285,8 @@ class _MistCardState extends State<MistCard> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              '80 %',
-              style: TextStyle(
-                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
-              textDirection: TextDirection.ltr,
-            ),
-            Text(
-              '90 %',
-              style: TextStyle(
-                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
-              textDirection: TextDirection.ltr,
-            ),
+            HuCVal(),
+            HuGoalVal(),
           ],
         )
       ],
@@ -312,7 +305,7 @@ class _TimerBodyState extends State<TimerBody> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Mist',
+      'Timers',
       textDirection: TextDirection.ltr,
     );
   }
@@ -343,11 +336,14 @@ class ChartBody extends StatefulWidget {
 }
 
 class _ChartBodyState extends State<ChartBody> {
+  bool showAvg = false;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'charts',
-      textDirection: TextDirection.ltr,
+    return Padding(
+      padding: const EdgeInsets.only(right: 18.0, left: 12.0, top: 24, bottom: 250),
+      child: LineChart(
+        showAvg ? avgData() : mainData(),
+      ),
     );
   }
 }
@@ -369,19 +365,16 @@ class _TempValState extends State<TempVal> {
     return ValueListenableBuilder(
       valueListenable: tempVal,
       builder: (ctx, value, child) {
-
         return Text(
-              (tempVal.value/10).toString()+' °C',
-              style: TextStyle(
-                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
-              textDirection: TextDirection.ltr,
-            );
+          (tempVal.value / 10).toString() + ' °C',
+          style:
+              TextStyle(fontFamily: "Vazir", fontSize: 30, color: Colors.black),
+          textDirection: TextDirection.ltr,
+        );
       },
     );
   }
 }
-
-
 
 class TempSetVal extends StatefulWidget {
   const TempSetVal({Key? key}) : super(key: key);
@@ -396,9 +389,8 @@ class _TempSetValState extends State<TempSetVal> {
     return ValueListenableBuilder(
       valueListenable: tempGoal,
       builder: (ctx, value, child) {
-
         return Text(
-          tempGoal.value.toString()+' °C',
+          tempGoal.value.toString() + ' °C',
           style: TextStyle(
               fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
           textDirection: TextDirection.ltr,
@@ -408,18 +400,263 @@ class _TempSetValState extends State<TempSetVal> {
   }
 }
 
-void setTempVal(i){
-  tempVal.value=i;
+class HuCVal extends StatefulWidget {
+  const HuCVal({Key? key}) : super(key: key);
+
+  @override
+  _HuCValState createState() => _HuCValState();
 }
 
-void setTempGoalVal(i){
-  tempGoal.value=i;
+class _HuCValState extends State<HuCVal> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: huVal,
+      builder: (ctx, value, child) {
+        return Text(
+          (huVal.value / 10).toString() + ' %',
+          style:
+              TextStyle(fontFamily: "Vazir", fontSize: 30, color: Colors.black),
+          textDirection: TextDirection.ltr,
+        );
+      },
+    );
+  }
 }
 
-void setHumVal(i){
+class HuGoalVal extends StatefulWidget {
+  const HuGoalVal({Key? key}) : super(key: key);
 
+  @override
+  _HuGoalValState createState() => _HuGoalValState();
 }
 
-void setHumGoalVal(i){
-
+class _HuGoalValState extends State<HuGoalVal> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: huGoal,
+      builder: (ctx, value, child) {
+        return Text(
+          huGoal.value.toString() + ' %',
+          style: TextStyle(
+              fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
+          textDirection: TextDirection.ltr,
+        );
+      },
+    );
+  }
 }
+
+void setTempVal(i) {
+  tempVal.value = i;
+}
+
+void setTempGoalVal(i) {
+  tempGoal.value = i;
+}
+
+void setHuVal(i) {
+  huVal = i;
+}
+
+void setHuGoalVal(i) {
+  huGoal = i;
+}
+
+
+LineChartData mainData() {
+  return LineChartData(
+    gridData: FlGridData(
+      show: false,
+      drawVerticalLine: true,
+      getDrawingHorizontalLine: (value) {
+        return FlLine(
+          color: const Color(0xff37434d),
+          strokeWidth: 1,
+        );
+      },
+      getDrawingVerticalLine: (value) {
+        return FlLine(
+          color: const Color(0xff37434d),
+          strokeWidth: 1,
+        );
+      },
+    ),
+    titlesData: FlTitlesData(
+      show: true,
+      bottomTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 22,
+        getTextStyles: (value) =>
+        const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 10),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 1:
+              return 'MAR';
+            case 3:
+              return 'JUN';
+            case 5:
+              return 'SEP';
+          }
+          return '';
+        },
+        margin: 8,
+      ),
+      leftTitles: SideTitles(
+        showTitles: true,
+        getTextStyles: (value) => const TextStyle(
+          color: Color(0xff67727d),
+          fontWeight: FontWeight.bold,
+          fontSize: 10,
+        ),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 1:
+              return '10k';
+            case 3:
+              return '30k';
+            case 5:
+              return '50k';
+          }
+          return '';
+        },
+        reservedSize: 28,
+        margin: 12,
+      ),
+    ),
+    borderData:
+    FlBorderData(show: true, border: Border.all(color: const Color(0xff37434d), width: 1)),
+    minX: 0,
+    maxX: 11,
+    minY: 0,
+    maxY: 6,
+    lineBarsData: [
+      LineChartBarData(
+        spots: [
+          FlSpot(0, 0),
+          FlSpot(2.6, 2),
+          FlSpot(4.9, 5),
+          FlSpot(6.8, 3.1),
+          FlSpot(8, 4),
+          FlSpot(9.5, 3),
+          FlSpot(11, 4),
+
+        ],
+        isCurved: true,
+        colors: gradientColors,
+        barWidth: 5,
+        isStrokeCapRound: true,
+        dotData: FlDotData(
+          show: false,
+        ),
+        belowBarData: BarAreaData(
+          show: true,
+          colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),
+        ),
+      ),
+    ],
+  );
+}
+
+LineChartData avgData() {
+  return LineChartData(
+    lineTouchData: LineTouchData(enabled: false),
+    gridData: FlGridData(
+      show: true,
+      drawHorizontalLine: true,
+      getDrawingVerticalLine: (value) {
+        return FlLine(
+          color: const Color(0xff37434d),
+          strokeWidth: 1,
+        );
+      },
+      getDrawingHorizontalLine: (value) {
+        return FlLine(
+          color: Colors.red,
+          strokeWidth: 1,
+        );
+      },
+    ),
+    titlesData: FlTitlesData(
+      show: true,
+      bottomTitles: SideTitles(
+        showTitles: true,
+        reservedSize: 22,
+        getTextStyles: (value) =>
+        const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 10),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 2:
+              return 'MAR';
+            case 5:
+              return 'JUN';
+            case 8:
+              return 'SEP';
+          }
+          return '';
+        },
+        margin: 8,
+      ),
+      leftTitles: SideTitles(
+        showTitles: true,
+        getTextStyles: (value) => const TextStyle(
+          color: Color(0xff67727d),
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
+        getTitles: (value) {
+          switch (value.toInt()) {
+            case 1:
+              return '10k';
+            case 3:
+              return '30k';
+            case 5:
+              return '50k';
+          }
+          return '';
+        },
+        reservedSize: 28,
+        margin: 12,
+      ),
+    ),
+    borderData:
+    FlBorderData(show: true, border: Border.all(color: const Color(0xff37434d), width: 1)),
+    minX: 0,
+    maxX: 11,
+    minY: 0,
+    maxY: 6,
+    lineBarsData: [
+      LineChartBarData(
+        spots: [
+          FlSpot(0, 3.44),
+          FlSpot(2.6, 3.44),
+          FlSpot(4.9, 3.44),
+          FlSpot(6.8, 3.44),
+          FlSpot(8, 3.44),
+          FlSpot(9.5, 3.44),
+          FlSpot(11, 3.44),
+        ],
+        isCurved: true,
+        colors: [
+          ColorTween(begin: gradientColors[0], end: gradientColors[1]).lerp(0.2)!,
+          ColorTween(begin: gradientColors[0], end: gradientColors[1]).lerp(0.2)!,
+        ],
+        barWidth: 5,
+        isStrokeCapRound: true,
+        dotData: FlDotData(
+          show: false,
+        ),
+        belowBarData: BarAreaData(show: true, colors: [
+          ColorTween(begin: gradientColors[0], end: gradientColors[1])
+              .lerp(0.2)!
+              .withOpacity(0.1),
+          ColorTween(begin: gradientColors[0], end: gradientColors[1])
+              .lerp(0.2)!
+              .withOpacity(0.1),
+        ]),
+      ),
+    ],
+  );
+}
+
