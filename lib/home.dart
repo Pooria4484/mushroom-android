@@ -6,8 +6,8 @@ import 'package:mushroom/main.dart';
 //°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 ValueNotifier valueNotifier =
     ValueNotifier<Icon>(Icon(Icons.wifi_protected_setup_sharp));
-ValueNotifier tempVal = ValueNotifier<int>(25);
-ValueNotifier tempSet = ValueNotifier<int>(25);
+ValueNotifier tempVal = ValueNotifier<int>(250);
+ValueNotifier tempGoal = ValueNotifier<int>(25);
 ValueNotifier bodyID = ValueNotifier<int>(0);
 
 class Body extends StatelessWidget {
@@ -112,7 +112,8 @@ class TempBody extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              print('Card tapped.');
+              //tempVal.value++;
+              //tempGoal.value--;
             },
             child: const SizedBox(
               height: 110,
@@ -186,18 +187,13 @@ class _TempCardState extends State<TempCard> {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              '32° C',
-              style: TextStyle(
-                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
-              textDirection: TextDirection.ltr,
-            ),
-            Text(
-              '22° C',
-              style: TextStyle(
-                  fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
-              textDirection: TextDirection.ltr,
-            ),
+            TempVal(),
+            TempSetVal()
+            // Text(
+            //   '22° C',
+            //
+            //   textDirection: TextDirection.ltr,
+            // ),
           ],
         )
       ],
@@ -358,4 +354,72 @@ class _ChartBodyState extends State<ChartBody> {
 
 void setBody(id) {
   bodyID.value = id;
+}
+
+class TempVal extends StatefulWidget {
+  const TempVal({Key? key}) : super(key: key);
+
+  @override
+  _TempValState createState() => _TempValState();
+}
+
+class _TempValState extends State<TempVal> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: tempVal,
+      builder: (ctx, value, child) {
+
+        return Text(
+              (tempVal.value/10).toString()+' °C',
+              style: TextStyle(
+                  fontFamily: "Vazir", fontSize: 30, color: Colors.black),
+              textDirection: TextDirection.ltr,
+            );
+      },
+    );
+  }
+}
+
+
+
+class TempSetVal extends StatefulWidget {
+  const TempSetVal({Key? key}) : super(key: key);
+
+  @override
+  _TempSetValState createState() => _TempSetValState();
+}
+
+class _TempSetValState extends State<TempSetVal> {
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: tempGoal,
+      builder: (ctx, value, child) {
+
+        return Text(
+          tempGoal.value.toString()+' °C',
+          style: TextStyle(
+              fontFamily: "Vazir", fontSize: 18, color: Colors.black54),
+          textDirection: TextDirection.ltr,
+        );
+      },
+    );
+  }
+}
+
+void setTempVal(i){
+  tempVal.value=i;
+}
+
+void setTempGoalVal(i){
+  tempGoal.value=i;
+}
+
+void setHumVal(i){
+
+}
+
+void setHumGoalVal(i){
+
 }

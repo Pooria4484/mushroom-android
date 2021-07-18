@@ -58,7 +58,26 @@ class Client{
 
   void handleMessage(message) async {
     valueNotifier.value=Icon(Icons.wifi_outlined,color: Colors.white);
+    String cmnd=message;
+    if(cmnd.contains('*#')&&cmnd.contains('@\$')){
+      cmnd=cmnd.substring(cmnd.indexOf('*#')+2,cmnd.indexOf('@\$'));
+      print(cmnd);
+      if(cmnd.contains('tec')){
+        String buff=cmnd.substring(cmnd.indexOf('tec')+3,cmnd.indexOf('tec')+6);
+        var val = int.parse(buff);
+        assert(val is int);
+        setTempVal(val);
+      }
+
+      if(cmnd.contains('teg')){
+        String buff=cmnd.substring(cmnd.indexOf('teg')+3,cmnd.indexOf('teg')+5);
+        var val = int.parse(buff);
+        assert(val is int);
+        setTempGoalVal(val);
+      }
+    }
     print(message);
+
   }
 
 
