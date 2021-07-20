@@ -1,9 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/helpers/show_number_picker.dart';
 import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/main.dart';
+import 'package:mushroom/settings.dart';
 
+Settings settings = Settings();
 List<Color> gradientColors = [
   const Color(0xff23b6e6),
   const Color(0xff02d39a),
@@ -30,7 +33,21 @@ class Body extends StatelessWidget {
       home: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => settings),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                  ))
+            ],
+          ),
           body: Center(
             child: PageBody(),
           ),
@@ -114,9 +131,19 @@ class TempBody extends StatelessWidget {
           color: Colors.amberAccent,
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              //tempVal.value++;
-              //tempGoal.value--;
+            onDoubleTap: () {
+              var temp = tempGoal.value;
+              showMaterialNumberPicker(
+                context: context,
+                title: 'دمای محیط را انتخاب کنید',
+                maxNumber: 40,
+                minNumber: 10,
+                selectedNumber: temp,
+                onChanged: (value) {
+                  client.send('*#teg$value@\$');
+                  print('*#teg$value@\$');
+                },
+              );
             },
             child: const SizedBox(
               height: 110,
@@ -131,7 +158,19 @@ class TempBody extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {
-              //print('Card tapped.');
+              var temp = huGoal.value;
+
+              showMaterialNumberPicker(
+                context: context,
+                title: 'درصد رطوبت را انتخاب کنید',
+                maxNumber: 90,
+                minNumber: 40,
+                selectedNumber: temp,
+                onChanged: (value) {
+                  client.send('*#hug$value@\$');
+                  print('*#hug$value@\$');
+                },
+              );
             },
             child: const SizedBox(
               height: 110,
@@ -337,10 +376,12 @@ class ChartBody extends StatefulWidget {
 
 class _ChartBodyState extends State<ChartBody> {
   bool showAvg = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 18.0, left: 12.0, top: 24, bottom: 250),
+      padding:
+          const EdgeInsets.only(right: 18.0, left: 12.0, top: 24, bottom: 250),
       child: LineChart(
         showAvg ? avgData() : mainData(),
       ),
@@ -457,13 +498,12 @@ void setTempGoalVal(i) {
 }
 
 void setHuVal(i) {
-  huVal = i;
+  huVal.value = i;
 }
 
 void setHuGoalVal(i) {
-  huGoal = i;
+  huGoal.value = i;
 }
-
 
 LineChartData mainData() {
   return LineChartData(
@@ -488,8 +528,10 @@ LineChartData mainData() {
       bottomTitles: SideTitles(
         showTitles: true,
         reservedSize: 22,
-        getTextStyles: (value) =>
-        const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 10),
+        getTextStyles: (value) => const TextStyle(
+            color: Color(0xff68737d),
+            fontWeight: FontWeight.bold,
+            fontSize: 10),
         getTitles: (value) {
           switch (value.toInt()) {
             case 1:
@@ -525,8 +567,9 @@ LineChartData mainData() {
         margin: 12,
       ),
     ),
-    borderData:
-    FlBorderData(show: true, border: Border.all(color: const Color(0xff37434d), width: 1)),
+    borderData: FlBorderData(
+        show: true,
+        border: Border.all(color: const Color(0xff37434d), width: 1)),
     minX: 0,
     maxX: 11,
     minY: 0,
@@ -541,7 +584,6 @@ LineChartData mainData() {
           FlSpot(8, 4),
           FlSpot(9.5, 3),
           FlSpot(11, 4),
-
         ],
         isCurved: true,
         colors: gradientColors,
@@ -552,7 +594,8 @@ LineChartData mainData() {
         ),
         belowBarData: BarAreaData(
           show: true,
-          colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),
+          colors:
+              gradientColors.map((color) => color.withOpacity(0.3)).toList(),
         ),
       ),
     ],
@@ -583,8 +626,10 @@ LineChartData avgData() {
       bottomTitles: SideTitles(
         showTitles: true,
         reservedSize: 22,
-        getTextStyles: (value) =>
-        const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 10),
+        getTextStyles: (value) => const TextStyle(
+            color: Color(0xff68737d),
+            fontWeight: FontWeight.bold,
+            fontSize: 10),
         getTitles: (value) {
           switch (value.toInt()) {
             case 2:
@@ -620,8 +665,9 @@ LineChartData avgData() {
         margin: 12,
       ),
     ),
-    borderData:
-    FlBorderData(show: true, border: Border.all(color: const Color(0xff37434d), width: 1)),
+    borderData: FlBorderData(
+        show: true,
+        border: Border.all(color: const Color(0xff37434d), width: 1)),
     minX: 0,
     maxX: 11,
     minY: 0,
@@ -639,8 +685,10 @@ LineChartData avgData() {
         ],
         isCurved: true,
         colors: [
-          ColorTween(begin: gradientColors[0], end: gradientColors[1]).lerp(0.2)!,
-          ColorTween(begin: gradientColors[0], end: gradientColors[1]).lerp(0.2)!,
+          ColorTween(begin: gradientColors[0], end: gradientColors[1])
+              .lerp(0.2)!,
+          ColorTween(begin: gradientColors[0], end: gradientColors[1])
+              .lerp(0.2)!,
         ],
         barWidth: 5,
         isStrokeCapRound: true,
@@ -659,4 +707,3 @@ LineChartData avgData() {
     ],
   );
 }
-
