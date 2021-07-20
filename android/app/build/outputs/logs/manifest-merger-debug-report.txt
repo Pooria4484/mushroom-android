@@ -6,7 +6,10 @@ INJECTED from /home/pooria/Android/projects/mushroom-android/android/app/src/mai
 INJECTED from /home/pooria/Android/projects/mushroom-android/android/app/src/main/AndroidManifest.xml:1:1-42:12
 MERGED from /home/pooria/Android/projects/mushroom-android/android/app/src/main/AndroidManifest.xml:1:1-42:12
 MERGED from [:wifi] /home/pooria/Android/projects/mushroom-android/build/wifi/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-13:12
+MERGED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-17:12
+MERGED from [:flutter_plugin_android_lifecycle] /home/pooria/Android/projects/mushroom-android/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:connectivity] /home/pooria/Android/projects/mushroom-android/build/connectivity/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:shared_preferences] /home/pooria/Android/projects/mushroom-android/build/shared_preferences/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:adhara_socket_io] /home/pooria/Android/projects/mushroom-android/build/adhara_socket_io/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:connectivity_plus] /home/pooria/Android/projects/mushroom-android/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat:1.1.0-alpha01] /home/pooria/.gradle/caches/transforms-2/files-2.1/8eb26194f31919f6e267f8dd45afe206/appcompat-1.1.0-alpha01/AndroidManifest.xml:17:1-22:12
@@ -30,8 +33,8 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /home/pooria/.gradle/ca
 MERGED from [androidx.savedstate:savedstate:1.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/5f3bd6e72d1ff1a4481f72926be3faad/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/e3a7d3b723deff8b2b903c0665652c62/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c9ce6976a0ee114a7df6a78a9d188526/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/750b7b3e6ba5087b346f6e90470bbb4c/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/a81ff3a6f4fe4cdba627ce49c2369465/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/793aeea327d8b0368ff5df157d748988/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/815bb9272ee789daabc21bc15b42e2c3/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -122,8 +125,14 @@ INJECTED from /home/pooria/Android/projects/mushroom-android/android/app/src/mai
 INJECTED from /home/pooria/Android/projects/mushroom-android/android/app/src/main/AndroidManifest.xml
 MERGED from [:wifi] /home/pooria/Android/projects/mushroom-android/build/wifi/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:wifi] /home/pooria/Android/projects/mushroom-android/build/wifi/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /home/pooria/Android/projects/mushroom-android/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] /home/pooria/Android/projects/mushroom-android/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] /home/pooria/Android/projects/mushroom-android/build/connectivity/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity] /home/pooria/Android/projects/mushroom-android/build/connectivity/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/pooria/Android/projects/mushroom-android/build/shared_preferences/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:shared_preferences] /home/pooria/Android/projects/mushroom-android/build/shared_preferences/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:adhara_socket_io] /home/pooria/Android/projects/mushroom-android/build/adhara_socket_io/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:adhara_socket_io] /home/pooria/Android/projects/mushroom-android/build/adhara_socket_io/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:connectivity_plus] /home/pooria/Android/projects/mushroom-android/build/connectivity_plus/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
@@ -170,10 +179,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pooria/.gradle/c
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/e3a7d3b723deff8b2b903c0665652c62/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c9ce6976a0ee114a7df6a78a9d188526/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c9ce6976a0ee114a7df6a78a9d188526/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/750b7b3e6ba5087b346f6e90470bbb4c/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/750b7b3e6ba5087b346f6e90470bbb4c/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/c7739dfe0a1efd64a0dd260a875d3ca5/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/a81ff3a6f4fe4cdba627ce49c2369465/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/a81ff3a6f4fe4cdba627ce49c2369465/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /home/pooria/.gradle/caches/transforms-2/files-2.1/793aeea327d8b0368ff5df157d748988/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
@@ -216,3 +225,19 @@ uses-permission#android.permission.CHANGE_WIFI_STATE
 ADDED from [:wifi] /home/pooria/Android/projects/mushroom-android/build/wifi/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-76
 	android:name
 		ADDED from [:wifi] /home/pooria/Android/projects/mushroom-android/build/wifi/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-73
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-77
+queries
+ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:9:5-15:15
+intent#action:name:android.intent.action.GET_CONTENT+data:mimeType:*/*
+ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-14:18
+action#android.intent.action.GET_CONTENT
+ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-72
+	android:name
+		ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:11:21-69
+data
+ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-44
+	android:mimeType
+		ADDED from [:file_picker] /home/pooria/Android/projects/mushroom-android/build/file_picker/intermediates/merged_manifest/debug/AndroidManifest.xml:13:19-41
