@@ -1,5 +1,5 @@
 build
-android/app/build
+android/app/build/intermediates
 .dart_tool
 .idea
 android/app/build/intermediates/merged-not-compiled-resources/release/color-v21/abc_btn_colored_borderless_text_material.xml
