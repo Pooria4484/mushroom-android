@@ -370,6 +370,7 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FloatingActionButton.extended(
+                      heroTag: "btn2",
                       onPressed: (){
                         client.send('*#STASSID'+ssid+"PASS"+pass+"END@\$\r\n");
                         print('*#STASSID'+ssid+"PASS"+pass+"END@\$\r\n");
@@ -394,6 +395,7 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FloatingActionButton.extended(
+                      heroTag: "btn1",
                       onPressed: (){
                         client.send('*#UPDATE@\$');
                       },

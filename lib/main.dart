@@ -12,11 +12,14 @@ void main() {
   server();
   body = Body();
   runApp(MaterialApp(
-      title: 'Navigation Basics',
-      home: body,
+    theme: ThemeData(
+      primarySwatch: Colors.blue,
+    ),
+    title: 'Navigation Basics',
+    home: body,
     debugShowCheckedModeBanner: false,
   ));
-  }
+}
 
 class Client {
   late Socket socket;
@@ -52,7 +55,7 @@ class Client {
           //socket.destroy();
           //isConnected = false;
           //valueNotifier.value =
-              //Icon(Icons.wifi_protected_setup_sharp, color: Colors.red);
+          //Icon(Icons.wifi_protected_setup_sharp, color: Colors.red);
         },
       );
     } catch (SocketException) {
@@ -63,7 +66,9 @@ class Client {
   void send(data) async {
     try {
       socket.write(data + '\r\n');
-    } catch (e){print(e);}
+    } catch (e) {
+      print(e);
+    }
   }
 
   void handleMessage(message) async {
@@ -80,15 +85,13 @@ class Client {
         setTempVal(val);
       }
 
-
       if (cmnd.contains('-TSE-')) {
         if (!cmnd.contains('-TTE-')) {
           setTempSystem(0);
-        }else{
+        } else {
           setTempSystem(1);
         }
       }
-
 
       if (cmnd.contains('-TTE-')) {
         setTempSystem(1);
@@ -97,10 +100,9 @@ class Client {
       if (cmnd.contains('-TSD-')) {
         if (cmnd.contains('-TTE-')) {
           setTempSystem(1);
-        }else
+        } else
           setTempSystem(2);
       }
-
 
       if (cmnd.contains('-HSE-')) {
         if (cmnd.contains('-MTE-'))
@@ -114,8 +116,7 @@ class Client {
       }
 
       if (cmnd.contains('-HSD-')) {
-        if (cmnd.contains('-MTD-'))
-          setMistSystem(2);
+        if (cmnd.contains('-MTD-')) setMistSystem(2);
       }
 
       if (cmnd.contains('-FTE-')) {
@@ -126,7 +127,6 @@ class Client {
         setFanSystem(1);
       }
 
-
       if (cmnd.contains('-TAHD-')) {
         setSensorErrHandle(1);
       }
@@ -135,7 +135,6 @@ class Client {
         setSensorErrHandle(0);
       }
 
-
       if (cmnd.contains('-ESE-')) {
         setExternalSensor(0);
       }
@@ -143,7 +142,6 @@ class Client {
       if (cmnd.contains('-ESD-')) {
         setExternalSensor(1);
       }
-
 
       if (cmnd.contains('teg')) {
         String buff =
@@ -155,7 +153,7 @@ class Client {
 
       if (cmnd.contains('ver')) {
         String buff =
-        cmnd.substring(cmnd.indexOf('ver') + 3, cmnd.indexOf('ver') + 19);
+            cmnd.substring(cmnd.indexOf('ver') + 3, cmnd.indexOf('ver') + 19);
         setVersion(buff);
       }
 
@@ -182,22 +180,20 @@ void server() async {
   while (true) {
     await Future.delayed(const Duration(seconds: 4));
     try {
-     // if (client.isConnected) {
-        client.send('*#sync@\$');
+      // if (client.isConnected) {
+      client.send('*#sync@\$');
       //} else {
       //  client.startTCPClient();
-      }
-     catch (e) {
-       print(e);
-     }
+    } catch (e) {
+      print(e);
+    }
   }
 }
 
 void wifiOnClick() {
   try {
-
     client.startTCPClient();
-  } catch (e){print(e);}
+  } catch (e) {
+    print(e);
+  }
 }
-
-

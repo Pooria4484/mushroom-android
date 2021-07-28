@@ -5,6 +5,7 @@ import 'package:flutter_material_pickers/helpers/show_number_picker.dart';
 import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/main.dart';
 import 'package:mushroom/settings.dart';
+import 'package:mushroom/timePage.dart';
 
 Settings settings = Settings();
 List<Color> gradientColors = [
@@ -346,10 +347,7 @@ class TimerBody extends StatefulWidget {
 class _TimerBodyState extends State<TimerBody> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Timers',
-      textDirection: TextDirection.ltr,
-    );
+    return TimersBody();
   }
 }
 
