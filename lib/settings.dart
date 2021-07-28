@@ -9,6 +9,8 @@ ValueNotifier mistSystem = ValueNotifier<int>(2);
 ValueNotifier fanSystem = ValueNotifier<int>(1);
 ValueNotifier sensorErrHandle=ValueNotifier<int>(1);
 ValueNotifier version=ValueNotifier<String>('2021-07-28-21-00');
+ValueNotifier externalSensor=ValueNotifier<int>(1);
+String ssid='',pass='';
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
 
@@ -211,6 +213,50 @@ class _SettingsState extends State<Settings> {
 
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    textDirection: TextDirection.rtl,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'سنسور بیسیم خارجی :',
+                        style: TextStyle(
+                            fontFamily: "Vazir",
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                        textDirection: TextDirection.rtl,
+                      ),
+                      ValueListenableBuilder(valueListenable: externalSensor,
+                          builder: (ctx, value, child){
+                            return ToggleSwitch(
+                              minWidth: 50.0,
+                              cornerRadius: 20.0,
+                              activeBgColors: [
+                                [Colors.green[800]!],
+                                [Colors.red[800]!]
+                              ],
+                              activeFgColor: Colors.white,
+                              inactiveBgColor: Colors.grey,
+                              inactiveFgColor: Colors.white,
+                              initialLabelIndex: externalSensor.value,
+                              totalSwitches: 2,
+                              //labels: ['اتومات', 'تایمر','خاموش'],
+                              radiusStyle: true,
+                              icons: [Icons.check_circle, Icons.do_not_disturb_alt],
+                              onToggle: (index) {
+                                if(index==0)
+                                  client.send('*#TESE@\$');
+                                else
+                                  client.send('*#TESD@\$');
+                              },
+                            );
+                          })
+
+                    ],
+                  ),
+                ),
                 Divider(
                   height: 20,
                   thickness: 5,
@@ -291,6 +337,10 @@ class _SettingsState extends State<Settings> {
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
                   child: TextFormField(
+                      onChanged: (str){
+                        ssid=str;
+
+                      },
                       keyboardType: TextInputType.text,
                       textAlign: TextAlign.center,
                       decoration: const InputDecoration(
@@ -303,6 +353,10 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: TextFormField(
+                      onChanged: (str){
+                        pass=str;
+
+                      },
                       textAlign: TextAlign.center,
                       obscuringCharacter: "*",
                       obscureText: true,
@@ -316,7 +370,10 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: FloatingActionButton.extended(
-                      onPressed: null,
+                      onPressed: (){
+                        client.send('*#STASSID'+ssid+"PASS"+pass+"END@\$\r\n");
+                        print('*#STASSID'+ssid+"PASS"+pass+"END@\$\r\n");
+                      },
                       label: Text(
                         'ارسال',
                         style: TextStyle(fontFamily: "Vazir"),
@@ -371,4 +428,8 @@ void setSensorErrHandle(int t) {
 
 void setVersion(String t){
   version.value=t;
+}
+
+void setExternalSensor(int t){
+  externalSensor.value=t;
 }

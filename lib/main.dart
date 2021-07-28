@@ -109,7 +109,7 @@ class Client {
           setMistSystem(0);
       }
 
-      if (cmnd.contains('-HTE-')) {
+      if (cmnd.contains('-MTE-')) {
         setMistSystem(1);
       }
 
@@ -134,6 +134,16 @@ class Client {
       if (cmnd.contains('-TAHE-')) {
         setSensorErrHandle(0);
       }
+
+
+      if (cmnd.contains('-ESE-')) {
+        setExternalSensor(0);
+      }
+
+      if (cmnd.contains('-ESD-')) {
+        setExternalSensor(1);
+      }
+
 
       if (cmnd.contains('teg')) {
         String buff =
