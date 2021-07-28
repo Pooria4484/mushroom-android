@@ -157,13 +157,13 @@ class TempBody extends StatelessWidget {
           color: Colors.lightBlueAccent,
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
+            onDoubleTap: () {
               var temp = huGoal.value;
 
               showMaterialNumberPicker(
                 context: context,
                 title: 'درصد رطوبت را انتخاب کنید',
-                maxNumber: 90,
+                maxNumber: 95,
                 minNumber: 40,
                 selectedNumber: temp,
                 onChanged: (value) {

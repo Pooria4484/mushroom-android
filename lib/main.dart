@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom/home.dart';
+import 'package:mushroom/settings.dart';
 
 Client client = Client(39810);
 late Body body;
@@ -79,12 +80,73 @@ class Client {
         setTempVal(val);
       }
 
+
+      if (cmnd.contains('-TSE-')) {
+        if (!cmnd.contains('-TTE-')) {
+          setTempSystem(0);
+        }else{
+          setTempSystem(1);
+        }
+      }
+
+
+      if (cmnd.contains('-TTE-')) {
+        setTempSystem(1);
+      }
+
+      if (cmnd.contains('-TSD-')) {
+        if (cmnd.contains('-TTE-')) {
+          setTempSystem(1);
+        }else
+          setTempSystem(2);
+      }
+
+
+      if (cmnd.contains('-HSE-')) {
+        if (cmnd.contains('-MTE-'))
+          setMistSystem(1);
+        else
+          setMistSystem(0);
+      }
+
+      if (cmnd.contains('-HTE-')) {
+        setMistSystem(1);
+      }
+
+      if (cmnd.contains('-HSD-')) {
+        if (cmnd.contains('-MTD-'))
+          setMistSystem(2);
+      }
+
+      if (cmnd.contains('-FTE-')) {
+        setFanSystem(0);
+      }
+
+      if (cmnd.contains('-FTD-')) {
+        setFanSystem(1);
+      }
+
+
+      if (cmnd.contains('-TAHD-')) {
+        setSensorErrHandle(1);
+      }
+
+      if (cmnd.contains('-TAHE-')) {
+        setSensorErrHandle(0);
+      }
+
       if (cmnd.contains('teg')) {
         String buff =
             cmnd.substring(cmnd.indexOf('teg') + 3, cmnd.indexOf('teg') + 5);
         var val = int.parse(buff);
         assert(val is int);
         setTempGoalVal(val);
+      }
+
+      if (cmnd.contains('ver')) {
+        String buff =
+        cmnd.substring(cmnd.indexOf('ver') + 3, cmnd.indexOf('ver') + 19);
+        setVersion(buff);
       }
 
       if (cmnd.contains('hug')) {
@@ -123,9 +185,9 @@ void server() async {
 
 void wifiOnClick() {
   try {
-    // client.socket.destroy();
-    // client.socket.close();
-    // client = Client(39810);
+
     client.startTCPClient();
   } catch (e){print(e);}
 }
+
+
