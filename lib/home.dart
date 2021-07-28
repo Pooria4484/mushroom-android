@@ -180,16 +180,19 @@ class TempBody extends StatelessWidget {
             ),
           ),
         ),
-        Card(
-          color: Colors.white38,
-          child: InkWell(
-            splashColor: Colors.blue.withAlpha(30),
-            onTap: () {
-              //print('Card tapped.');
-            },
-            child: const SizedBox(
-              height: 110,
-              child: Center(child: Co2Card()),
+        Visibility(
+          visible: false,
+          child: Card(
+            color: Colors.white38,
+            child: InkWell(
+              splashColor: Colors.blue.withAlpha(30),
+              onTap: () {
+                //print('Card tapped.');
+              },
+              child: const SizedBox(
+                height: 110,
+                child: Center(child: Co2Card()),
+              ),
             ),
           ),
         )
