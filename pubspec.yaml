@@ -45,6 +45,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   flutter_launcher_icons: ^0.9.1
   duration_picker: "^1.0.0"
+  sn_progress_dialog: ^1.0.1
 
 
 

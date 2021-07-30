@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_material_pickers/helpers/show_number_picker.dart';
 import 'package:mushroom/bottomNav.dart';
 import 'package:mushroom/main.dart';
+import 'package:mushroom/relays.dart';
 import 'package:mushroom/settings.dart';
 import 'package:mushroom/timePage.dart';
 
@@ -106,7 +107,7 @@ class _PageBodyState extends State<PageBody> {
         } else if (bodyID.value == 2) {
           return ChartBody();
         } else {
-          return SettingsBody();
+          return RelaysBody();
         }
       },
     );
@@ -351,22 +352,6 @@ class _TimerBodyState extends State<TimerBody> {
   }
 }
 
-class SettingsBody extends StatefulWidget {
-  const SettingsBody({Key? key}) : super(key: key);
-
-  @override
-  _SettingsBodyState createState() => _SettingsBodyState();
-}
-
-class _SettingsBodyState extends State<SettingsBody> {
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'settings',
-      textDirection: TextDirection.ltr,
-    );
-  }
-}
 
 class ChartBody extends StatefulWidget {
   const ChartBody({Key? key}) : super(key: key);

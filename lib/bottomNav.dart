@@ -6,7 +6,7 @@ import 'package:mushroom/home.dart';
 BottomNavItemState itemState0=BottomNavItemState(Icons.thermostat_sharp,0);
 BottomNavItemState itemState1=BottomNavItemState(Icons.timer,1);
 BottomNavItemState itemState2=BottomNavItemState(Icons.stacked_line_chart,2);
-BottomNavItemState itemState3=BottomNavItemState(Icons.settings,3);
+BottomNavItemState itemState3=BottomNavItemState(Icons.outbond_outlined,3);
 int selectedID=0;
 var first=true;
 class BottomNav extends StatelessWidget {

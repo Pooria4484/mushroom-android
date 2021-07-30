@@ -3,7 +3,9 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mushroom/home.dart';
+import 'package:mushroom/relays.dart';
 import 'package:mushroom/settings.dart';
+import 'package:mushroom/timePage.dart';
 
 Client client = Client(39810);
 late Body body;
@@ -172,6 +174,108 @@ class Client {
         assert(val is int);
         setHuVal(val);
       }
+
+      if(cmnd.contains('fton')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('fton') + 4, cmnd.indexOf('fton') + 6);
+        var val = int.parse(buff);
+        assert(val is int);
+        fanOnTime.value=val;
+      }
+
+
+      if(cmnd.contains('ftoff')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('ftoff') + 5, cmnd.indexOf('ftoff') + 7);
+        var val = int.parse(buff);
+        assert(val is int);
+        fanOffTime.value=val;
+      }
+
+
+      if(cmnd.contains('mton')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('mton') + 4, cmnd.indexOf('mton') + 6);
+        var val = int.parse(buff);
+        assert(val is int);
+        mistOnTime.value=val;
+      }
+
+
+      if(cmnd.contains('mtoff')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('mtoff') + 5, cmnd.indexOf('mtoff') + 7);
+        var val = int.parse(buff);
+        assert(val is int);
+        mistOffTime.value=val;
+      }
+
+
+      if(cmnd.contains('tton')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('tton') + 4, cmnd.indexOf('tton') + 6);
+        var val = int.parse(buff);
+        assert(val is int);
+        coolerOnTime.value=val;
+      }
+
+
+      if(cmnd.contains('ttfast')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('ttfast') + 6, cmnd.indexOf('ttfast') + 8);
+        var val = int.parse(buff);
+        assert(val is int);
+        coolerFastTime.value=val;
+      }
+
+      if(cmnd.contains('ttoff')){
+        String buff =
+        cmnd.substring(cmnd.indexOf('ttoff') + 5, cmnd.indexOf('ttoff') + 7);
+        var val = int.parse(buff);
+        assert(val is int);
+        coolerOffTime.value=val;
+
+      }
+      if (cmnd.contains('RLH')){
+        String buff =cmnd.substring(cmnd.indexOf('RLH'));
+
+
+        if(buff[6]=='1'){
+          mistRelay.value=true;
+        }else{
+          mistRelay.value=false;
+        }
+
+
+        if(buff[8]=='1'){
+          fanRelay.value=true;
+        }else{
+          fanRelay.value=false;
+        }
+
+
+        if(buff[10]=='1'){
+          waterRelay.value=true;
+        }else{
+          waterRelay.value=false;
+        }
+
+        if(buff[11]=='1'){
+          motorRelay.value=true;
+        }else{
+          motorRelay.value=false;
+        }
+
+        if(buff[12]=='1'){
+          speedRelay.value=true;
+        }else{
+          speedRelay.value=false;
+        }
+
+
+      }
+      //huc458hug73tec314teg26fton10ftoff50mton10mtoff50tton10ttoff50ttfast02
+      //RLH00M0F0C110
     }
   }
 }
